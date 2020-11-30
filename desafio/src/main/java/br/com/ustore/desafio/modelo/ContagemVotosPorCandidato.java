@@ -1,7 +1,6 @@
 package br.com.ustore.desafio.modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class ContagemVotosPorCandidato {
@@ -9,10 +8,9 @@ public class ContagemVotosPorCandidato {
 	@Id
 	private long idContagemVotosPorCandidatos;
 	private long totalVotos;
+	@OneToOne
 	private Candidato candidato;
-	
-	
-	public ContagemVotosPorCandidato() {} 
+	public ContagemVotosPorCandidato() {}
 	
 	public long getIdContagemVotosPorCandidatos() {
 		return idContagemVotosPorCandidatos;

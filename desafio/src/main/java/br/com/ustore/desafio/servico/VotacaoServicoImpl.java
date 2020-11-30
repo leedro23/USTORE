@@ -28,8 +28,14 @@ public class VotacaoServicoImpl implements VotacaoServico {
 
 	@Override
 	public void votar(Votacao voto) {
-		
-		if (voto != null && voto.isVotoBranco()) {
+
+		if(voto.isVotoBranco() || voto.isVotoNulo()) {
+			repositorioVotacao.save(voto);
+			return;
+		}
+
+		if (voto != null) {
+
 			long maiorNumeroVotos = 0L;
 			long idCandidatoMaiorNumeroVotos = 0L;
 			List<ContagemVotosPorCandidato> listaVotos = repositorioContagemVotos.findAll();
@@ -46,7 +52,7 @@ public class VotacaoServicoImpl implements VotacaoServico {
 				if (idCandidatoMaiorNumeroVotos == contVotos.getCandidato().getIdCandidato()) {
 					contVotos.setTotalVotos(contVotos.getTotalVotos() + 1);
 					repositorioContagemVotos.save(contVotos);
-					Resultado resultado = repositorioResultado.findById(voto.getCodigoVerificadorResultado()).get();
+					Resultado resultado = repositorioResultado.findById(voto.getCodigoVerificadorResultado());
 					resultado.setTotalVotosBrancos(resultado.getTotalVotosBrancos() + 1);
 					repositorioResultado.save(resultado);
 
@@ -60,7 +66,7 @@ public class VotacaoServicoImpl implements VotacaoServico {
 			if (contagemVoto != null) {
 				contagemVoto.setTotalVotos(contagemVoto.getTotalVotos() + 1);
 				repositorioContagemVotos.save(contagemVoto);
-				Resultado resultado = repositorioResultado.findById(voto.getCodigoVerificadorResultado()).get();
+				Resultado resultado = repositorioResultado.findById(voto.getCodigoVerificadorResultado());
 				resultado.setTotalVotosNominais(resultado.getTotalVotosNominais() + 1);
 				repositorioResultado.save(resultado);
 
@@ -68,7 +74,7 @@ public class VotacaoServicoImpl implements VotacaoServico {
 		}
 
 		else {
-			Resultado resultado = repositorioResultado.findById(voto.getCodigoVerificadorResultado()).get();
+			Resultado resultado = repositorioResultado.findById(voto.getCodigoVerificadorResultado());
 			resultado.setTotalVotosNulos(resultado.getTotalVotosNulos() + 1);
 			repositorioResultado.save(resultado);
 		}

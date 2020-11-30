@@ -14,7 +14,7 @@ public class ResultadoServicoImpl implements ResultadoServico {
 
 	@Override
 	public Resultado buscarResultado(long id) {
-		return repositorioResultado.findById(id).orElseThrow(RuntimeException::new);
+		return repositorioResultado.findById(id);
 	}
 
 }

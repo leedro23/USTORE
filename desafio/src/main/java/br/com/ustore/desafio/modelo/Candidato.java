@@ -2,6 +2,7 @@ package br.com.ustore.desafio.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Candidato  {
@@ -9,7 +10,9 @@ public class Candidato  {
 	@Id
 	private long idCandidato;
 	private String nomeCandidato;
+	@OneToOne
 	private Cargo cargo;
+	@OneToOne
 	private Partido partido;
 	private long numeroCandidatura;
 

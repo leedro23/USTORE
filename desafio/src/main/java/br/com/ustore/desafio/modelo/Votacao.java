@@ -1,10 +1,9 @@
 package br.com.ustore.desafio.modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
+
+import javax.persistence.*;
 
 @Entity
 public class Votacao {
@@ -14,7 +13,8 @@ public class Votacao {
 	private boolean votoBranco;
 	private boolean votoNulo;
 	private LocalDate dataHoraVoto;
-	private List<Candidato> opcoesCandidatos;
+	@ManyToMany
+	private Set<Candidato> opcoesCandidatos;
 	private long candidatoEscolhido;
 	private long codigoVerificadorResultado;
 
@@ -53,12 +53,12 @@ public class Votacao {
 		this.dataHoraVoto = dataHoraVoto;
 	}
 
-	public List<Candidato> getOpcoesCandidatos() {
-		return opcoesCandidatos;
+	public Candidato getOpcoesCandidatos() {
+		return (Candidato) opcoesCandidatos;
 	}
 
-	public void setOpcoesCandidatos(List<Candidato> opcoesCandidatos) {
-		this.opcoesCandidatos = opcoesCandidatos;
+	public void setOpcoesCandidatos(Candidato opcoesCandidatos) {
+		this.opcoesCandidatos = (Set<Candidato>) opcoesCandidatos;
 	}
 
 	public long getCandidatoEscolhido() {

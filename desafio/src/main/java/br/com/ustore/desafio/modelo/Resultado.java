@@ -1,16 +1,14 @@
 package br.com.ustore.desafio.modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Resultado {
 
 	@Id
 	private long codigoVerificador;
-	@ManyToOne( fetch = FetchType.LAZY)
+	@ManyToOne
+	@JoinColumn(name = "votacao_id")
 	private ContagemVotosPorCandidato contagemVotos;
 	private long totalVotosBrancos;
 	private long totalVotosNulos;
