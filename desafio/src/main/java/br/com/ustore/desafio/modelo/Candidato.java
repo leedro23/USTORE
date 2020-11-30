@@ -2,66 +2,66 @@ package br.com.ustore.desafio.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.io.Serializable;
 
 @Entity
-public class Candidato implements Serializable {
+public class Candidato  {
 
-    private static final long serialVersionUID = 1L;
+	@Id
+	private long idCandidato;
+	private String nomeCandidato;
+	private Cargo cargo;
+	private Partido partido;
+	private long numeroCandidatura;
 
-    @Id
-    private long id;
-    private String nome;
-    private Cargo cargo;
-    private Partido partido;
-    private long numeroCandidatura;
-    
-    
-    public Candidato (long id, String nome, Cargo cargo, Partido partido, long numeroCandidatura) {
-    	this.id = id;
-    	this.nome= nome;
-    	this.cargo=cargo;
-    	this.partido = partido;
-    	this.numeroCandidatura = numeroCandidatura;
-    }
-    
-    
-    public Candidato() {}
-    
-	public long getId() {
-		return id;
+	public Candidato() {
 	}
-	public void setId(long id) {
-		this.id = id;
+
+	public long getIdCandidato() {
+		return idCandidato;
 	}
-	public String getNome() {
-		return nome;
+
+	public void setId(long idCandidato) {
+		this.idCandidato = idCandidato;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public String getNomeCandidato() {
+		return nomeCandidato;
 	}
+
+	public void setNome(String nomeCandidato) {
+		this.nomeCandidato = nomeCandidato;
+	}
+
 	public Cargo getCargo() {
 		return cargo;
 	}
+
 	public void setCargo(Cargo cargo) {
 		this.cargo = cargo;
 	}
+
 	public Partido getPartido() {
 		return partido;
 	}
+
 	public void setPartido(Partido partido) {
 		this.partido = partido;
 	}
+
 	public long getNumeroCandidatura() {
 		return numeroCandidatura;
 	}
+
 	public void setNumeroCandidatura(long numeroCandidatura) {
 		this.numeroCandidatura = numeroCandidatura;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-    
 
+	public void setIdCandidato(long idCandidato) {
+		this.idCandidato = idCandidato;
+	}
+
+	public void setNomeCandidato(String nomeCandidato) {
+		this.nomeCandidato = nomeCandidato;
+	}
 
 }

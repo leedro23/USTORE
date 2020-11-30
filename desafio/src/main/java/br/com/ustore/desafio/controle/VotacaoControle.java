@@ -15,31 +15,26 @@ import br.com.ustore.desafio.modelo.Votacao;
 import br.com.ustore.desafio.servico.ResultadoServico;
 import br.com.ustore.desafio.servico.VotacaoServico;
 
-
 @RestController
 @RequestMapping("/votacao")
 public class VotacaoControle {
 
-     
-    @Autowired
-    private VotacaoServico votacaoServico;
-    
-    @Autowired
-    private ResultadoServico votacaoResultado;
-    
+	@Autowired
+	private VotacaoServico votacaoServico;
 
-    @PostMapping("/votar")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public long votar(@RequestBody Votacao votacao) {
-        return votacaoServico.votar(votacao)  ;
-    }
+	@Autowired
+	private ResultadoServico votacaoResultado;
 
-   
-  @GetMapping("/resultado/{id}")
-  @ResponseStatus(code = HttpStatus.OK)
-    public Resultado resultadoVotacao(@PathVariable long id) {
-        return votacaoResultado.buscarResultados(id)  ;
-    }
+	@PostMapping("/votar")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public void votar(@RequestBody Votacao votacao) {
+		votacaoServico.votar(votacao);
+	}
 
+	@GetMapping("/resultado/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public Resultado resultadoVotacao(@PathVariable long id) {
+		return votacaoResultado.buscarResultado(id);
+	}
 
 }

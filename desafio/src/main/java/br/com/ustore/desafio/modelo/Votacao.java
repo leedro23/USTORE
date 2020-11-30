@@ -4,27 +4,29 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Votacao {
 
 	@Id
-	private long id;
+	private long idVotacao;
 	private boolean votoBranco;
 	private boolean votoNulo;
 	private LocalDate dataHoraVoto;
-	private Candidato cadidatoEscolhido;
+	private List<Candidato> opcoesCandidatos;
+	private long candidatoEscolhido;
 	private long codigoVerificadorResultado;
 
 	public Votacao() {
 	}
 
-	public long getId() {
-		return id;
+	public long getIdVotacao() {
+		return idVotacao;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setIdVotacao(long idVotacao) {
+		this.idVotacao = idVotacao;
 	}
 
 	public boolean isVotoBranco() {
@@ -51,12 +53,20 @@ public class Votacao {
 		this.dataHoraVoto = dataHoraVoto;
 	}
 
-	public Candidato getCadidatoEscolhido() {
-		return cadidatoEscolhido;
+	public List<Candidato> getOpcoesCandidatos() {
+		return opcoesCandidatos;
 	}
 
-	public void setCadidatoEscolhido(Candidato cadidatoEscolhido) {
-		this.cadidatoEscolhido = cadidatoEscolhido;
+	public void setOpcoesCandidatos(List<Candidato> opcoesCandidatos) {
+		this.opcoesCandidatos = opcoesCandidatos;
+	}
+
+	public long getCandidatoEscolhido() {
+		return candidatoEscolhido;
+	}
+
+	public void setCandidatoEscolhido(long candidatoEscolhido) {
+		this.candidatoEscolhido = candidatoEscolhido;
 	}
 
 	public long getCodigoVerificadorResultado() {

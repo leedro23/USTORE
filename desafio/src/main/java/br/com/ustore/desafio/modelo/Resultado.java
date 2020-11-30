@@ -1,35 +1,22 @@
 package br.com.ustore.desafio.modelo;
 
 import javax.persistence.Entity;
-
-import java.time.LocalDate;
-import java.util.List;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Resultado {
 
 	@Id
 	private long codigoVerificador;
-	private List<Votacao> listaVotacao;
-	private LocalDate dataHoraFechamento;
+	@ManyToOne( fetch = FetchType.LAZY)
+	private ContagemVotosPorCandidato contagemVotos;
 	private long totalVotosBrancos;
 	private long totalVotosNulos;
-	private long totalVotosApurados;
 	private long totalVotosNominais;
 
-	public Resultado(long codigoVerificador, List<Votacao> listaVotacao, LocalDate dataHoraFechamento,
-			long totalVotosBrancos, long totalVotosNulos, long totalVotosApurados, long totalVotosNominais) {
-		this.codigoVerificador = codigoVerificador;
-		this.listaVotacao = listaVotacao;
-		this.dataHoraFechamento = dataHoraFechamento;
-		this.totalVotosBrancos = totalVotosBrancos;
-		this.totalVotosNulos = totalVotosNulos;
-		this.totalVotosApurados = totalVotosApurados;
-		this.totalVotosNominais = totalVotosNominais;
-	}
-
-	public Resultado() {
+	private Resultado() {
 	}
 
 	public long getCodigoVerificador() {
@@ -40,20 +27,12 @@ public class Resultado {
 		this.codigoVerificador = codigoVerificador;
 	}
 
-	public List<Votacao> getListaVotacao() {
-		return listaVotacao;
+	public ContagemVotosPorCandidato getContagemVotos() {
+		return contagemVotos;
 	}
 
-	public void setListaVotacao(List<Votacao> listaVotacao) {
-		this.listaVotacao = listaVotacao;
-	}
-
-	public LocalDate getDataHoraFechamento() {
-		return dataHoraFechamento;
-	}
-
-	public void setDataHoraFechamento(LocalDate dataHoraFechamento) {
-		this.dataHoraFechamento = dataHoraFechamento;
+	public void setContagemVotos(ContagemVotosPorCandidato contagemVotos) {
+		this.contagemVotos = contagemVotos;
 	}
 
 	public long getTotalVotosBrancos() {
@@ -70,14 +49,6 @@ public class Resultado {
 
 	public void setTotalVotosNulos(long totalVotosNulos) {
 		this.totalVotosNulos = totalVotosNulos;
-	}
-
-	public long getTotalVotosApurados() {
-		return totalVotosApurados;
-	}
-
-	public void setTotalVotosApurados(long totalVotosApurados) {
-		this.totalVotosApurados = totalVotosApurados;
 	}
 
 	public long getTotalVotosNominais() {

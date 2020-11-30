@@ -7,31 +7,26 @@ import javax.persistence.Id;
 public class Partido {
 
 	@Id
-	private long id;
-	private String nome;
-
-	public Partido(long id, String nome) {
-		this.id = id;
-		this.nome = nome;
-	}
+	private long idPartido;
+	private String nomePartido;
 
 	public Partido() {
 	}
 
-	public long getId() {
-		return id;
+	public long getIdPartido() {
+		return idPartido;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setIdPartido(long idPartido) {
+		this.idPartido = idPartido;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getNomePartido() {
+		return nomePartido;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomePartido(String nomePartido) {
+		this.nomePartido = nomePartido;
 	}
 
 }

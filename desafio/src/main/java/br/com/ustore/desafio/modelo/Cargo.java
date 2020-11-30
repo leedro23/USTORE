@@ -7,31 +7,26 @@ import javax.persistence.Id;
 public class Cargo {
 
 	@Id
-	private long id;
-	private String nome;
-
-	public Cargo(long id, String nome) {
-		this.id = id;
-		this.nome = nome;
-	}
+	private long idCargo;
+	private String nomeCargo;
 
 	public Cargo() {
 	}
 
-	public long getId() {
-		return id;
+	public long getIdCargo() {
+		return idCargo;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setIdCargo(long idCargo) {
+		this.idCargo = idCargo;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getNomeCargo() {
+		return nomeCargo;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeCargo(String nomeCargo) {
+		this.nomeCargo = nomeCargo;
 	}
 
 }

@@ -6,7 +6,6 @@ import br.com.ustore.desafio.modelo.Resultado;
 
 public interface RepositorioResultado extends JpaRepository<Resultado, Long> {
  
-	Resultado findById(long id);
-	
+
 	
 }
